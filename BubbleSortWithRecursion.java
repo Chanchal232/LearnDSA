@@ -20,12 +20,16 @@ class HelloWorld {
         if(endIndex==0){
             return;
         }
-        if(startIndex<endIndex && input[startIndex]>input[endIndex]){
-            //swap
-            int temp = input[startIndex];
-            input[startIndex] = input[endIndex];
-            input[endIndex] = temp;
+         if(startIndex<endIndex){
+            if(input[startIndex]>input[endIndex]){
+                //swap
+                int temp = input[startIndex];
+                input[startIndex] = input[endIndex];
+                input[endIndex] = temp;
+            }
             helper(input,startIndex+1,endIndex);
+        }else{
+            helper(input,0,endIndex-1);
         }else{
             helper(input,0,endIndex-1);
         }
