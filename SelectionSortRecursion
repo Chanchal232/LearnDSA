@@ -1,0 +1,33 @@
+import java.util.Arrays;
+class HelloWorld {
+    public static void main(String[] args) {
+        int[] inputarray = new int[]{56,6,4,8,6,4,53,2,1};
+        selectionSort(inputarray);
+        System.out.println(Arrays.toString(inputarray));
+        
+    }
+    
+    static void selectionSort(int[] input){
+        
+        helper(input,0,input.length,0);
+    }
+    
+    static void helper(int[] input,int startIndex,int endIndex,int maxIndex){
+        if(endIndex ==0 ){
+            return;
+        }
+        if(endIndex>startIndex){
+            if(input[startIndex]>input[maxIndex]){
+                 helper(input,startIndex+1,endIndex,startIndex);
+            }else{
+             helper(input,startIndex+1,endIndex,maxIndex);
+            }
+        }else{
+            int temp = input[maxIndex];
+            input[maxIndex] = input[endIndex-1];
+            input[endIndex-1] = temp;
+            System.out.println(Arrays.toString(input));
+            helper(input,0,endIndex-1,0);
+        }
+    }
+}
